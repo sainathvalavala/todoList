@@ -119,17 +119,17 @@ function Products() {
             // console.log(x);
             return (
               <div>
-                <div
-                  style={{
-                    display: "flex",
-                    listStyle: "none",
-                    flexDirection: "column",
-                    border: "2px solid black",
-                    padding: "3px",
-                    margin: "5px",
-                    cursor: "pointer",
-                    textAlign: "center",
-                  }}
+                <div className="flex flex-col list-none border-2 border-black p-1 m-1 text-center"
+                  // style={{
+                  //   display: "flex",
+                  //   listStyle: "none",
+                  //   flexDirection: "column",
+                  //   border: "2px solid black",
+                  //   padding: "3px",
+                  //   margin: "5px",
+                  //   cursor: "pointer",
+                  //   textAlign: "center",
+                  // }}
                 >
                   <li>{x.title}</li>
                   <li>
@@ -140,7 +140,7 @@ function Products() {
                   </li>
                   <li>price: ${x.price}</li>
                   <li>rating: {x.rating}</li>
-                  <button onClick={() => addToCart(x)}>Add to cart</button>
+                  <button onClick={() => addToCart(x)} className="px-6 py-2 bg-blue-500 text-white rounded-full cursor-pointer">Add to cart</button>
                 </div>
               </div>
             );
