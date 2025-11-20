@@ -27,7 +27,7 @@ function Cart({ cartItems }) {
         </tbody>
       </table>
       <hr></hr>
-      <h3>TotalPrice: {totalPrice}</h3>
+      <h3>TotalPrice: ${totalPrice}</h3>
       <hr></hr>
       </div>
     </div>

@@ -140,7 +140,7 @@ function Products() {
                   </li>
                   <li>price: ${x.price}</li>
                   <li>rating: {x.rating}</li>
-                  <button onClick={() => addToCart(x)} className="px-6 py-2 bg-blue-500 text-white rounded-full cursor-pointer">Add to cart</button>
+                  <button onClick={() => addToCart(x)} className="p-1 bg-blue-500 text-white rounded-full cursor-pointer">Add to cart</button>
                 </div>
               </div>
             );
