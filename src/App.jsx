@@ -1,7 +1,7 @@
 import React from "react";
 import "./index.css";
 
-import Products from "./components/products";
+import Products from "./components/Products";
 
 function App() {
   return (
