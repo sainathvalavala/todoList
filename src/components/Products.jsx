@@ -1,87 +1,3 @@
-// import React, { useEffect, useState } from "react";
-// import Cart from "./Cart";
-
-// function Products() {
-//   var [products, setProducts] = useState([]);
-//   useEffect(() => {
-//     fetch("https://dummyjson.com/products")
-//       .then((res) => res.json())
-//       .then((data) => {
-//         // products=[...data]
-//         setProducts(data.products);
-//         // console.log(products);
-//       });
-//   }, []);
-//   // fetch("https://dummyjson.com/products")
-//   //     .then((res) => res.json())
-//   //     .then((data) => {
-//   //       setProducts(data.products)})
-
-//   function Abc(x) {
-//     console.log(x)
-//     let ar = [];
-//       ar.push(x);
-//      console.log(ar)
-//   }
-//   return (
-//     <div style={{ display: "flex", marginLeft: "5px" }}>
-//       <ul
-//         style={{
-//           display: "flex",
-//           flexWrap: "wrap",
-//           justifyContent: "space-evenly",
-//           alignItems: "center",
-//         }}
-//       >
-//         {products.map((x) => {
-//           return (
-//             <>
-//               <div>
-//                 <div
-//                   style={{
-//                     display: "flex",
-//                     listStyle: "none",
-//                     flexDirection: "column",
-//                     border: "2px solid black",
-//                     flexWrap: "wrap",
-//                     justifyContent: "space-around",
-//                     cursor: "pointer",
-//                     alignItems: "center",
-//                     padding: "3px",
-//                     margin: "5px",
-//                   }}
-//                   onClick={() => {
-//                     Abc(x);
-//                   }}
-//                 >
-//                   <li>{x.title}</li>
-//                   <li>
-//                     <img
-//                       src={x.images}
-//                       style={{ width: "100px", height: "100px" }}
-//                     />
-//                   </li>
-//                   <li> price:${x.price}</li>
-//                   <li>rating:{x.rating}</li>
-//                 </div>
-//               </div>
-//             </>
-//           );
-//         })}
-//       </ul>
-//       <Cart cart={cart}>
-//         <Child onClick={Abc} />
-//       </Cart>
-//     </div>
-//   );
-// }
-
-// function Child({ Click }) {
-//   return <button onClick={Click}>Add to Cart</button>;
-// }
-
-// export default Products;
-
 import React, { useEffect, useState } from "react";
 import Cart from "./Cart";
 
@@ -99,58 +15,49 @@ function Products() {
 
   function addToCart(item) {
     setCart([...cart, item]);
-    // console.log("Cart:", [...cart, item]);
   }
 
   return (
-    <>
-      <div className="border-3 border-red-500">
-      <h1 className="border-2  p-3  text-center">Products</h1>
-      <div style={{ display: "flex", marginLeft: "5px" }}>
-        <ul
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "space-evenly",
-            alignItems: "center",
-          }}
-        >
-          {products.map((x) => {
-            // console.log(x);
-            return (
-              <div>
-                <div className="flex flex-col list-none border-2 border-black p-1 m-1 text-center"
-                  // style={{
-                  //   display: "flex",
-                  //   listStyle: "none",
-                  //   flexDirection: "column",
-                  //   border: "2px solid black",
-                  //   padding: "3px",
-                  //   margin: "5px",
-                  //   cursor: "pointer",
-                  //   textAlign: "center",
-                  // }}
+    <div>
+      <h3 className="text-3xl font-bold text-gray-800 mb-6 text-center">
+        Products
+      </h3>
+
+      <div className="flex ml-2">
+        <ul className="flex flex-wrap justify-evenly items-center">
+          {products.map((x) => (
+            <div key={x.id} className="m-3">
+              <div
+                className="flex flex-col border border-gray-400 p-3 rounded-lg shadow 
+                         hover:shadow-md transition cursor-pointer text-center w-40"
+              >
+                <li className="font-semibold mb-2">{x.title}</li>
+
+                <li>
+                  <img
+                    src={x.images[0]}
+                    className="w-24 h-24 object-cover mx-auto rounded"
+                  />
+                </li>
+
+                <li className="mt-2 text-gray-700">Price: ${x.price}</li>
+                <li className="text-sm text-gray-500">Rating: {x.rating}</li>
+
+                <button
+                  onClick={() => addToCart(x)}
+                  className="mt-3 bg-blue-600 text-white py-1 px-3 rounded 
+                           hover:bg-blue-700 transition"
                 >
-                  <li>{x.title}</li>
-                  <li>
-                    <img
-                      src={x.images[0]}
-                      style={{ width: "100px", height: "100px" }}
-                    />
-                  </li>
-                  <li>price: ${x.price}</li>
-                  <li>rating: {x.rating}</li>
-                  <button onClick={() => addToCart(x)} className="p-1 bg-blue-500 text-white rounded-full cursor-pointer">Add to cart</button>
-                </div>
+                  Add to cart
+                </button>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </ul>
 
-        <Cart cartItems={cart} />
+        <Cart cart={cart} addToCart={addToCart} />
       </div>
-      </div>
-    </>
+    </div>
   );
 }
 
